@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MusicController;
+use App\Http\Controllers\VideoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/musics', [MusicController::class, 'index']);
+Route::get('/videos', [VideoController::class, 'index']);
