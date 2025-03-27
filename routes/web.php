@@ -44,13 +44,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// مسیرهای مربوط به ویدیوها و موزیک‌ها
-Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
-Route::get('/musics', [MusicController::class, 'index'])->name('musics.index');
-Route::get('/musics/create', function() {
-    return view('musics.create');
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+});
+Route::get('/profile', function () {
+    return Inertia::render('Auth/Login');
+}); 
+Route::get('/musics', function () {
+    return Inertia::render('Musics/Index');
 });
 
-Route::post('/musics', [MusicController::class, 'store'])->name('musics.store');
+Route::get('/musics/create', function () {
+    return Inertia::render('Musics/Create');
+});
+
+Route::get('/videos', function () {
+    return Inertia::render('Videos/Index'); 
+});
 // بارگذاری مسیرهای احراز هویت
 require __DIR__.'/auth.php';
+
+
+
