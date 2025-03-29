@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Music; // مدل صحیح رو ایمپورت کن
 use Illuminate\Http\Request;
-
+use Inertia\Inertia;
 class MusicController extends Controller
 {
     public function index()
     {
-        $musics = Music::all(); // باید لیست موزیک‌ها رو بگیری، نه ویدیوها!
-        return view('musics.index', compact('musics')); // مسیر ویو هم باید برای موزیک باشه
+        return Inertia::render('Musics/Index');
     }
     public function store(Request $request)
     {

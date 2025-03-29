@@ -24,4 +24,15 @@
             alt="User Avatar" 
             class="w-8 h-8 rounded-full object-cover"
           >
-          <span class="text-sm font-medium
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-200">
+            {{ $page.props.auth.user.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script setup>
+import { BellIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+</script>
