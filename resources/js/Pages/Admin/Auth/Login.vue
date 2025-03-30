@@ -1,29 +1,36 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { defineProps } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+import { Inertia } from '@inertiajs/inertia';  // اضافه کردن Inertia
 
-defineProps({
-    canResetPassword: Boolean,
-    status: String,
+// وارد کردن کامپوننت‌ها
+import InputLabel from '@/Components/InputLabel.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputError from '@/Components/InputError.vue';
+import Checkbox from '@/Components/Checkbox.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
+
+// تعریف props
+const props = defineProps({
+  loginRoute: { type: String, default: '/admin/login' },
 });
 
 const form = useForm({
-    email: '',
-    password: '',
-    remember: false,
+  email: '',
+  password: '',
+  remember: false,
 });
 
 const submit = () => {
-    form.post(route('login'), {
+    Inertia.post(props.loginRoute, form.data(), {  // استفاده از Inertia برای ارسال درخواست
         onFinish: () => form.reset('password'),
     });
 };
 </script>
+
+
+
 
 <template>
     <GuestLayout>
@@ -84,7 +91,11 @@ const submit = () => {
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
                 </PrimaryButton>
-              
+
+                <!-- دکمه ثبت‌نام -->
+                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Sign Up
+                </PrimaryButton>
             </div>
         </form>
     </GuestLayout>
