@@ -12,10 +12,14 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 
 // تعریف props
+// const props = defineProps({
+//   loginRoute: { type: String, default: '/admin/login' },
+// });
 const props = defineProps({
   loginRoute: { type: String, default: '/admin/login' },
+  status: { type: String, default: null }, // اضافه شد
+  canResetPassword: { type: Boolean, default: false }, // اضافه شد
 });
-
 const form = useForm({
   email: '',
   password: '',
@@ -90,11 +94,6 @@ const submit = () => {
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </PrimaryButton>
-
-                <!-- دکمه ثبت‌نام -->
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Sign Up
                 </PrimaryButton>
             </div>
         </form>

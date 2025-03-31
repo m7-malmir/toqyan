@@ -11,6 +11,7 @@ use Inertia\Inertia;
 // مسیرهای عمومی
 Route::get('/musics', [MusicController::class, 'index'])->name('musics.index');
 Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
+Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
 Route::get('/admin/login', function () {
     return Inertia::render('Admin/Auth/Login');
