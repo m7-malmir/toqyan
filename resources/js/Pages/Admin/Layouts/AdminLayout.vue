@@ -1,13 +1,14 @@
 <template>
-  <div class="flex h-screen bg-gray-100 dark:bg-gray-900">
+  <div class="flex h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white" dir="rtl">
     <!-- سایدبار -->
     <Sidebar />
 
-    <div class="flex flex-col flex-1">
+    <div class="flex flex-col flex-1 overflow-hidden">
       <!-- نوبار -->
       <Navbar />
 
-      <main class="flex-1 p-6">
+      <!-- محتوای اصلی -->
+      <main class="flex-1 p-6 overflow-y-auto">
         <slot />
       </main>
     </div>

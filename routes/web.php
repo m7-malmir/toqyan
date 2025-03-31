@@ -32,4 +32,9 @@ Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('adm
 Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login.post');
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/musics', [MusicController::class, 'create'])->name('admin.musics');
+    Route::post('/admin/musics', [MusicController::class, 'store']);
+});
+
 require __DIR__.'/auth.php';
